@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"os"
 
+	"go-chi-restful/routes"
+
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 )
@@ -26,7 +28,7 @@ func main() {
 		w.Write([]byte("Hello World!"))
 	})
 
-	r.Mount("/posts", postsResource{}.Routes())
+	r.Mount("/posts", routes.PostsResource{}.Routes())
 
 	log.Fatal(http.ListenAndServe(":"+port, r))
 }

@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"context"
 	"io"
-	"io/ioutil"
 	"net/http"
 
 	"github.com/go-chi/chi"
@@ -25,7 +24,7 @@ func (*JsonPlaceholder) GetPosts() (*http.Response, error) {
 
 	if err != nil {
 		return &http.Response{
-			Body: ioutil.NopCloser(bytes.NewBuffer(nil)),
+			Body: io.NopCloser(bytes.NewBuffer(nil)),
 		}, err
 	}
 
@@ -37,7 +36,7 @@ func (*JsonPlaceholder) CreatePost(body io.ReadCloser) (*http.Response, error) {
 
 	if err != nil {
 		return &http.Response{
-			Body: ioutil.NopCloser(bytes.NewBuffer(nil)),
+			Body: io.NopCloser(bytes.NewBuffer(nil)),
 		}, err
 	}
 
@@ -49,7 +48,7 @@ func (*JsonPlaceholder) GetPost(id string) (*http.Response, error) {
 
 	if err != nil {
 		return &http.Response{
-			Body: ioutil.NopCloser(bytes.NewBuffer(nil)),
+			Body: io.NopCloser(bytes.NewBuffer(nil)),
 		}, err
 	}
 
@@ -64,7 +63,7 @@ func (*JsonPlaceholder) UpdatePost(id string, body io.ReadCloser) (*http.Respons
 
 	if err != nil {
 		return &http.Response{
-			Body: ioutil.NopCloser(bytes.NewBuffer(nil)),
+			Body: io.NopCloser(bytes.NewBuffer(nil)),
 		}, err
 	}
 
@@ -72,7 +71,7 @@ func (*JsonPlaceholder) UpdatePost(id string, body io.ReadCloser) (*http.Respons
 
 	if err != nil {
 		return &http.Response{
-			Body: ioutil.NopCloser(bytes.NewBuffer(nil)),
+			Body: io.NopCloser(bytes.NewBuffer(nil)),
 		}, err
 	}
 
@@ -86,7 +85,7 @@ func (*JsonPlaceholder) DeletePost(id string) (*http.Response, error) {
 
 	if err != nil {
 		return &http.Response{
-			Body: ioutil.NopCloser(bytes.NewBuffer(nil)),
+			Body: io.NopCloser(bytes.NewBuffer(nil)),
 		}, err
 	}
 
@@ -94,7 +93,7 @@ func (*JsonPlaceholder) DeletePost(id string) (*http.Response, error) {
 
 	if err != nil {
 		return &http.Response{
-			Body: ioutil.NopCloser(bytes.NewBuffer(nil)),
+			Body: io.NopCloser(bytes.NewBuffer(nil)),
 		}, err
 	}
 

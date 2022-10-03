@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/middleware"
 )
 
 func main() {
@@ -18,14 +19,14 @@ func main() {
 	log.Printf("Starting up on http://localhost:%s", port)
 
 	r := chi.NewRouter()
+
+	r.Use(middleware.Logger)
+
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "text/plain")
 		w.Write([]byte("Hello World!"))
 	})
 
-	// attaches a route handler, function \/ defined in posts.go
 	r.Mount("/posts", postsResource{}.Routes())
 
-	// spin up server
 	log.Fatal(http.ListenAndServe(":"+port, r))
 }

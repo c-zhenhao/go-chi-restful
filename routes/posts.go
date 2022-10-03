@@ -140,7 +140,6 @@ func (rs PostsResource) List(w http.ResponseWriter, r *http.Request) {
 // Request Handler - POST /posts - Create a new post.
 func (rs PostsResource) Create(w http.ResponseWriter, r *http.Request) {
 	resp, err := CreatePost(r.Body)
-
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
